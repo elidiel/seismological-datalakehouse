@@ -118,5 +118,5 @@ This module provides a domain-oriented metadata governance model for seismologic
 - Transparent and auditable scientific workflows
 
 It represents a practical implementation of FAIR principles within a real-world Data Lakehouse environment.
-└── typedefs/
+
 

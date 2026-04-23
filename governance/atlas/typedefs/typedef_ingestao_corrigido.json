@@ -1,0 +1,69 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name": "EstacaoSismologica",
+      "typeVersion": "1.0",
+      "serviceType": "atlas",
+      "superTypes": ["DataSet"],
+      "attributeDefs": [
+        { "name": "nome", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "isUnique": false },
+        { "name": "sigla", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "isUnique": false },
+        { "name": "rede", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "isUnique": false },
+        { "name": "local", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "isUnique": false },
+        { "name": "descricao", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "isUnique": false },
+        { "name": "latitude", "typeName": "float", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "longitude", "typeName": "float", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "elevacao", "typeName": "float", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "data_inicio", "typeName": "date", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "data_fim", "typeName": "date", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "caminho_dataless", "typeName": "string", "isOptional": true, "cardinality": "SINGLE" }
+      ]
+    },
+    {
+      "name": "DadosDeIngestaoV2",
+      "typeVersion": "1.1",
+      "serviceType": "atlas",
+      "superTypes": ["DataSet"],
+      "attributeDefs": [
+        { "name": "formato", "typeName": "string", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "sensor", "typeName": "string", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "caminho_hdfs", "typeName": "string", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "download_url", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "description": "Link para download do arquivo bruto no HDFS via NameNode UI" },
+        { "name": "data_inicio", "typeName": "date", "isOptional": true, "cardinality": "SINGLE" },
+        { "name": "data_fim", "typeName": "date", "isOptional": true, "cardinality": "SINGLE" },
+        {
+          "name": "estacao_relacionada",
+          "typeName": "EstacaoSismologica",
+          "isOptional": true,
+          "cardinality": "SINGLE",
+          "isRelationship": true,
+          "relationshipTypeName": "EstacaoSismologica_DadosDeIngestao_Relacionamento",
+          "isUnique": false,
+          "isIndexable": true
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "EstacaoSismologica_DadosDeIngestao_Relacionamento",
+      "relationshipCategory": "ASSOCIATION",
+      "typeVersion": "1.0",
+      "endDef1": {
+        "type": "EstacaoSismologica",
+        "name": "dados_ingestao",
+        "isContainer": false,
+        "cardinality": "SET"
+      },
+      "endDef2": {
+        "type": "DadosDeIngestaoV2",
+        "name": "estacao_relacionada",
+        "isContainer": false,
+        "cardinality": "SINGLE"
+      }
+    }
+  ]
+}

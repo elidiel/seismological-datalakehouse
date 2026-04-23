@@ -1,0 +1,98 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name": "EventoSismico",
+      "typeVersion": "2.0",
+      "serviceType": "sismologia",
+      "superTypes": ["Process"],
+      "attributeDefs": [
+        { 
+          "name": "eventID", 
+          "typeName": "string", 
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1
+        },
+        { 
+          "name": "data_evento", 
+          "typeName": "date", 
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1
+        },
+        { 
+          "name": "hora_utc", 
+          "typeName": "string", 
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1
+        },
+        { 
+          "name": "hora_brasilia", 
+          "typeName": "string", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "latitude", 
+          "typeName": "float", 
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1
+        },
+        { 
+          "name": "longitude", 
+          "typeName": "float", 
+          "isOptional": false,
+          "cardinality": "SINGLE",
+          "valuesMinCount": 1,
+          "valuesMaxCount": 1
+        },
+        { 
+          "name": "profundidade_km", 
+          "typeName": "float", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "magnitude", 
+          "typeName": "float", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "tipo_magnitude", 
+          "typeName": "string", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "localidade", 
+          "typeName": "string", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "numero_estacoes_detectaram", 
+          "typeName": "int", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        },
+        { 
+          "name": "autor_analise", 
+          "typeName": "string", 
+          "isOptional": true,
+          "cardinality": "SINGLE"
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": []
+}
