@@ -2,21 +2,21 @@
 
 ## Overview
 
-This repository provides the implementation of a FAIR-compliant Data Lakehouse architecture designed for seismological data management. The architecture was developed to support the integration, processing, governance, and dissemination of heterogeneous seismic datasets within a unified and scalable framework.
+This repository provides the implementation of a FAIR-compliant **Seismological Data Lakehouse architecture** designed for the integration, processing, governance, and dissemination of heterogeneous seismic data.
 
-The proposed approach is part of a research study focused on improving reproducibility, traceability, and interoperability in seismological workflows, particularly in the context of regional monitoring systems in Northeastern Brazil.
+The architecture was developed as part of a research study focused on improving **reproducibility, traceability, and interoperability** in seismological workflows, particularly in the context of **regional seismic monitoring systems in Northeastern Brazil**.
 
 ---
 
-## Architecture Description
+## Architecture
 
-The architecture follows a layered Data Lakehouse paradigm composed of four main layers:
+The proposed architecture follows a layered Data Lakehouse paradigm composed of four main layers:
 
 * **Ingestion Layer**
   Automated data acquisition using Apache Airflow and Python pipelines integrated with ObsPy for MiniSEED processing.
 
 * **Storage Layer**
-  Distributed storage using Hadoop HDFS, supporting scalable and fault-tolerant data persistence.
+  Distributed storage using Hadoop HDFS, ensuring scalable and fault-tolerant data persistence.
 
 * **Processing Layer**
   Data transformation and analysis using Apache Spark and domain-specific tools such as SeisComP3.
@@ -24,7 +24,7 @@ The architecture follows a layered Data Lakehouse paradigm composed of four main
 * **Access Layer**
   Interactive data access through JupyterLab, APIs, and visualization tools.
 
-A **transversal governance layer**, implemented with Apache Atlas, ensures:
+A transversal **Governance Layer**, implemented with Apache Atlas, provides:
 
 * Metadata standardization
 * Data lineage tracking
@@ -46,96 +46,111 @@ A **transversal governance layer**, implemented with Apache Atlas, ensures:
 
 ```
 .
-├── ingestion/        # Airflow DAGs and ObsPy ingestion scripts
-├── processing/       # Spark jobs and data transformation pipelines
+├── ingestion/        # Airflow DAGs and ingestion scripts
+├── processing/       # Spark jobs and transformation pipelines
 ├── governance/       # Apache Atlas metadata and lineage scripts
 ├── notebooks/        # Jupyter notebooks for analysis and visualization
-├── data/             # Sample datasets (when available)
-├── docs/             # Architecture diagrams and documentation
+├── data/             # Sample datasets (if available)
+├── docs/             # Architecture diagrams
 └── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/elidiel/seismological-datalakehouse.git
+cd seismological-datalakehouse
+```
+
+---
+
+### 2. Start services (Docker)
+
+```bash
+docker compose up -d
+```
+
+---
+
+### 3. Access services
+
+* Apache Atlas → http://localhost:21000
+* Airflow → http://localhost:8080
+* JupyterLab → http://localhost:8888
+
+---
+
+### 4. Run ingestion pipeline
+
+```bash
+airflow dags trigger dag_ingestao_brutos
+```
+
+---
+
+### 5. Verify data in HDFS
+
+```bash
+hadoop fs -ls /sismologia/bruta
 ```
 
 ---
 
 ## Data Sources
 
-The architecture is designed to process real-world seismological data, including:
+The architecture supports real-world seismological data, including:
 
 * Waveform data in MiniSEED format (HHE, HHN, HHZ)
 * Station metadata in dataless SEED format
 * Seismic event data from SeisComP3 databases
 
-Due to data access restrictions, only sample datasets or synthetic data may be provided in this repository.
+Due to data access restrictions, only sample or synthetic datasets may be included.
 
 ---
 
 ## Reproducibility
 
-To support reproducibility, this repository includes:
+This repository includes:
 
-* Example scripts for data ingestion and processing
-* Sample workflows for metadata registration in Apache Atlas
-* Documentation describing the experimental setup
+* End-to-end data pipelines (ingestion → processing → governance → access)
+* Scripts for metadata registration in Apache Atlas
+* Containerized services using Docker Compose
 
-A full reproduction of the experiments requires:
-
-* Apache Hadoop
-* Apache Spark
-* Apache Airflow
-* Apache Atlas
-* Python (with ObsPy)
-
----
-
-## Installation (Simplified)
-
-```bash
-git clone https://github.com/SEU_USUARIO/seismological-datalakehouse.git
-cd seismological-datalakehouse
-pip install -r requirements.txt
-```
-
----
-
-## Usage
-
-1. Configure data sources and environment variables
-2. Execute Airflow DAGs for ingestion
-3. Run Spark jobs for processing
-4. Register metadata and lineage in Apache Atlas
-5. Access results via notebooks or visualization tools
+Some components (e.g., full Hadoop cluster and SeisComP3 integration) may require manual setup.
 
 ---
 
 ## Scientific Contribution
 
-This repository supports the implementation of a Data Lakehouse architecture that:
+This work contributes by:
 
-* Bridges the gap between data engineering and seismological workflows
-* Enables traceable and reproducible scientific data pipelines
-* Integrates FAIR principles directly into system design
+* Bridging data engineering and seismological workflows
+* Enabling reproducible and traceable scientific pipelines
+* Embedding FAIR principles into a Data Lakehouse architecture
 
 ---
 
 ## Citation
 
-If you use this repository in your research, please cite the associated paper:
+If you use this repository, please cite:
 
 ```
-(INSERIR AQUI O BIBTEX DO SEU PAPER)
+(Adicionar aqui o BibTeX do seu artigo após aceitação)
 ```
 
 ---
 
 ## License
 
-This project is licensed under the MIT License.
+MIT License
 
 ---
 
 ## Contact
-
-For questions or collaboration:
 
 **Elidiel Dantas da Costa**
 Federal University of Rio Grande do Norte (UFRN)
