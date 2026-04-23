@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: "Seismological Data Lakehouse Architecture"
+message: "If you use this software, please cite the associated paper."
+authors:
+  - family-names: Dantas da Costa
+    given-names: Elidiel
+affiliation: Federal University of Rio Grande do Norte (UFRN)
+date-released: 2026
+license: MIT
