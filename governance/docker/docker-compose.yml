@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  apache-atlas:
+    image: sburn/apache-atlas:latest
+    container_name: apache-atlas
+    ports:
+      - "21000:21000"
+      - "9026:9026"
+      - "9027:9027"
+    environment:
+      - ATLAS_ADMIN_USERNAME=admin
+      - ATLAS_ADMIN_PASSWORD=admin
+      - MANAGE_LOCAL_HBASE=true
+      - MANAGE_LOCAL_SOLR=true
+    volumes:
+      - ./data:/apache-atlas/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:21000"]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+      start_period: 300s
